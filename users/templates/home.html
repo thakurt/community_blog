@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .jumbotron-fluid {
+
+            color: #003399;
+            height: 90vh;
+
+
+
+        }
+
+        .card-body h1 {
+            font-size: 25px;
+        }
+
+
+
+
+        .card {
+            height: 90vh;
+        }
+
+        .card1 {
+            height: 80vh;
+        }
+
+        #createbtn {
+            border: 3px solid #003399;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+
+
+            .card-body h1 {
+                font-size: 15px;
+            }
+
+            .card-body h4 {
+                font-size: 11px;
+                margin-top: 15px;
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            .card-title {
+                font-size: 20px;
+
+                font-family: 'Odibee Sans', cursive;
+
+            }
+
+
+            .card {
+                margin-left: -19px;
+                margin-right: -19px;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <div class=" jumbotron-fluid justify-content-center align-items-center">
+        <div class="container container1">
+            <div class="card card1 shadow-lg p-3 mb-5 bg-white ">
+                <div class="card-header text-center">
+                    <b class="" style="color:#003399; ;"></b>
+                </div>
+                <div class="card-body text-center d-flex justify-content-center align-items-center flex-column">
+
+                    <h1>Welcome to our Community blog.Which is made by Django which is popular framework of python. This
+                        blog is all about you. You write and we will promote your post and you can earn money</h1>
+                    <br><br>
+
+
+
+
+                    <div class="container">
+                        <button class="btn " type="submit" style="background-color: #003399; color: white;"><a
+                                href="{% url 'login' %}" style="color: white;">LOGIN</a></button>
+                        <!--
+                                --><button class="btn " type="submit"
+                            style="background-color: #003399; color: white;"><a href="{% url 'signup' %}"
+                                style="color: white;">SIGNUP</a></button>
+
+                    </div>
+                    <br><br>
+                    <button class="btn " id="createbtn" type="submit"
+                        style="background-color: white; color: #003399;"><a href="{% url 'article_new' %}"
+                            style="color: #003399;"><b>CREATE YOUR POST</b></a></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="container">
+        <div class="card shadow-lg p-3 mb-5 bg-white ">
+            <div class="card-header text-center">
+                <b class="" style="color:#003399; ;">{% block title %}About Us{% endblock title %}</b>
+                <br><br>
+            </div>
+            <div class="card-body text-center d-flex justify-content-center align-items-center flex-column">
+
+
+
+
+                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</h4>
+                <br>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi
+                    ut aliquip ex ea commodo consequat.
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+
+
+</body>
+
+</html>

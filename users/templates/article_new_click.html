@@ -1,0 +1,21 @@
+{% block sidebar %}
+
+<style>
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+    <div class="card my-4">
+        <h5 class="card-header" style="background-color: #003399;color: white;">Write Your First Post</h5>
+        <div class="card-body">
+            <p class="card-text"> Hey, there this platform is talented person like you. So, start creating your own
+                awesome post</p>
+            <a href="{% url 'article_new' %}" class="btn ">Create Post</a>
+        </div>
+    </div>
+</div>
+
+{% endblock sidebar %}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <style>
+        h4 {
+
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+
+        .card-body a {
+            background-color: #003399;
+            color: white;
+        }
+
+        hr.new {
+            border: 0.1px solid #003399;
+        }
+
+
+        img {
+            max-width: 100%;
+            height: auto !important;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+
+
+            .card-text {
+                font-size: 11px;
+            }
+
+            .card-title {
+                font-size: 15px;
+
+                font-family: 'Roboto', sans-serif;
+
+            }
+
+
+            .card {
+                margin-left: -19px;
+                margin-right: -19px;
+            }
+
+
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+
+
+
+
+
+    {% extends 'base.html' %}
+    {% block title %}Articles{% endblock title %}
+    {% block content %}
+    {% load static %}
+
+    <div class="container">
+        <div class="row ">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8 mt-3 left">
+                {% for article in object_list %}
+                <div class="card mb-4 card shadow-lg mb-5 bg-white  justify-content-center align-items-center">
+
+                    <div class="card-body">
+                        {% if article.image %}
+                        <img src="{{ article.image.url }}" alt="Wait a minute" style="height: 10vh;">
+                        {% endif %}
+                        <br>
+                        <h4 class="card-title">
+                            {{ article.title }}</h4>
+                        <hr>
+                        <p class=" card-text text-muted">
+                            By {{ article.author }} | {{ article.date }} </p>
+
+                        <a href="{% url 'article_detail' article.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% block sidebar %} {% include 'article_new_click.html' %} {% endblock sidebar %}
+        </div>
+    </div>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation conatiner"></nav>
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="shadow-lg mb-5 bg-white"><a href="?page={{ page_obj.previous_page_number }}"
+                class="page-link ">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+        {% endif %}
+    </ul>
+    </nav>
+    </div>
+    {% endif %}
+
+
+    {% endblock content %}
+</body>
+
+</html>
+
+<div class="container">
+
+    <div class="card mb-4 card shadow-lg mb-5 bg-white  row main-row p-2 ">
+        <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="blog-img">
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mb-2">
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+
+                        </li>
+                        <li class="list-group-item">
+
+                        </li>
+                        <li class="list-group-item">
+
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="blog-title">
+                <h3></h3>
+
+            </div>
+            <div class="blog-date">
+
+            </div>
+            <div class="blog-desc">
+
+
+            </div>
+            <div class="blog-read-more">
+                <a href="{% url 'article_detail' article.pk %}" class="btn btn-primary">Read More &rarr;</a>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

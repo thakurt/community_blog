@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-decoration: none;
+        }
+
+
+        img {
+            max-width: 100%;
+            height: auto !important;
+
+        }
+
+
+        @media only screen and (max-width: 600px) {
+            .cardtext {
+                margin-left: 0px;
+            }
+
+            .card-body h1 {
+                font-size: 15px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #003399;
+
+            }
+
+
+
+            img {
+                max-width: 100%;
+                height: auto !important;
+
+            }
+
+            .text-muted {
+                font-size: 10px;
+            }
+
+            .card-body {
+                margin-left: -21px;
+                margin-right: -21px;
+            }
+
+
+
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+
+    {% extends 'base.html' %} {% block content %}
+    {% load static %}
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center  ">
+            <div class="col-md-8 card mb-4 ">
+                <div class="card-body ">
+                    <h1>{% block title %}
+                        {{ object.title }} {% endblock title %}</h1>
+                    <hr>
+                    <br>
+                    {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="" class="img-responsive">
+                    {% endif %}
+
+                    <p class="card-text  "
+                        style="color:#003399;font-family: 'Montserrat', sans-serif;line-height: 40px;">
+                        {{ article.body| safe }}</p>
+                    <hr>
+                    <p class=" text-muted"><b>By {{ article.author }} | {{ article.date }}</b></p>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="justify-content-center align-items-center">
+            <button class="btn " type="submit" style="background-color: #003399;"><a style="color: white;"
+                    href=" {% url 'article_edit' article.pk %}">Edit</a></button>
+            | <button class="btn " type="submit" style="background-color: #003399; color: white;"><a
+                    style="color: white;" href="{% url 'article_delete' article.pk %}">Delete</a></button>
+
+            <p>Back to <a style="color: #003399;" href="{% url 'article_list' %}">All Articles</a></p>
+        </div>
+
+    </div>
+
+    {% endblock content %}
+</body>
+
+</html>

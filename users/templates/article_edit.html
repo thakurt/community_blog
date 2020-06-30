@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Login Form -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form|crispy }}
+
+    <button class="btn " type="submit" style="background-color: #003399;color: white;">UPDATE</button>
+</form>
+
+
+
+{% endblock content %}

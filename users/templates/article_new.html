@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Login Form -->
+<div class="container">
+
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+
+
+        <button class="btn " type="submit" style="background-color: #003399;color: white;">Save</button>
+    </form>
+
+</div>
+
+
+
+{% endblock content %}
